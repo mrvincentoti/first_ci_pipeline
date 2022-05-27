@@ -38,7 +38,7 @@ jobs:
           at: ~/
       - run: cat ~/output.txt
       - print_pipeline_id
-        steps:
+    steps:
       - run: exit 1
       - run:
           name: on error
