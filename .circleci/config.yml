@@ -17,10 +17,31 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
-
+  print_welcome_message:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - commit
+      - run:
+          name: "Say welcome"
+          command: "echo Welcome to our first CI pipeline"
+  print_goodbye_message:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - commit
+      - run:
+          name: "Say goodbye"
+          command: "echo Goodbye for now from our first CI pipeline"
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   say-hello-workflow:
     jobs:
       - say-hello
+  message-workflow:
+    jobs:
+      - print_welcome_message
+      - print_goodbye_message
+          requires:
+            - print_welcome_message
