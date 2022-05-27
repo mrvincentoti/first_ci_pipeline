@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run:
           name: "Say welcome"
-          command: "echo Welcome to our first CI pipeline"
+          command: "echo Welcome $PROJECT_OWNER to your first CI pipeline"
   print_goodbye_message:
     docker:
       - image: circleci/node:13.8.0
@@ -20,7 +20,7 @@ jobs:
       - checkout
       - run:
           name: "Say goodbye"
-          command: "echo Goodbye for now from our first CI pipeline"
+          command: "echo Goodbye $PROJECT_OWNER for now from our first CI pipeline"
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
