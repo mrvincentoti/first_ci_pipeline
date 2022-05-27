@@ -28,6 +28,6 @@ workflows:
     jobs:
       - welcome/run
       - print_welcome_message
-      - print_goodbye_message
+      - print_goodbye_message:
           requires:
             - print_welcome_message
