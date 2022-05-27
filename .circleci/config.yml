@@ -21,7 +21,7 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - commit
+      - checkout
       - run:
           name: "Say welcome"
           command: "echo Welcome to our first CI pipeline"
@@ -29,7 +29,7 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - commit
+      - checkout
       - run:
           name: "Say goodbye"
           command: "echo Goodbye for now from our first CI pipeline"
