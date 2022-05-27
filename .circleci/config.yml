@@ -21,6 +21,28 @@ jobs:
       - run:
           name: "Say goodbye"
           command: "echo Goodbye $PROJECT_OWNER for now from our first CI pipeline"
+  save_hello_world_output:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run:
+          name: "Save hello world output"
+          command: echo "text to output here" > output.txt
+      - persist_to_workspace:
+        root: /tmp/workspace
+        paths:
+          - output.txt
+  print_output_file:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - checkout
+      - run:
+          name: "Print output file"
+          command: cat /tmp/workspace/output.txt
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
@@ -30,3 +52,5 @@ workflows:
       - print_goodbye_message:
           requires:
             - print_welcome_message
+      - save_hello_world_output
+      - print_output_file
