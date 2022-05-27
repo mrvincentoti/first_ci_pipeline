@@ -38,6 +38,12 @@ jobs:
           at: ~/
       - run: cat ~/output.txt
       - print_pipeline_id
+        steps:
+      - run: exit 1
+      - run:
+          name: on error
+          command: echo "Hello Error!"
+          when: on_fail
 
 workflows:
   message-workflow:
