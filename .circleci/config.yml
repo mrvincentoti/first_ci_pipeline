@@ -26,12 +26,12 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - run: mkdir -p /tmp/workspace
+      - run: mkdir -p workspace
       - run:
           name: "Save hello world output"
           command: echo "text to output here" > output.txt
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: workspace
           paths:
             - output.txt
   print_output_file:
