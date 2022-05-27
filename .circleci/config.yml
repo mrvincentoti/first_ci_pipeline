@@ -43,3 +43,5 @@ workflows:
     jobs:
       - print_welcome_message
       - print_goodbye_message
+          requires:
+            - print_welcome_message
